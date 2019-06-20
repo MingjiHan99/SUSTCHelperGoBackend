@@ -49,13 +49,13 @@ func Login(username string, password string) *http.Client {
 	req, err := http.NewRequest("POST", "https://cas.sustech.edu.cn/cas/login?service=http%3A%2F%2Fjwxt.sustech.edu.cn%2Fjsxsd%2F",
 		strings.NewReader(r.Form.Encode()))
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-	
+
 	resp, err := client.Do(req)
 
 	if err != nil || resp.StatusCode != 200 {
 		return nil
 	}
-	
+
 	defer resp.Body.Close()
 	return client
 }
