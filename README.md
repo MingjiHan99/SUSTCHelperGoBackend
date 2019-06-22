@@ -12,5 +12,6 @@ A backend project for SUSTechHelper Wechat Mini Program.
 #### Get your terrible GPA
 
 ```
+go run main.go
 curl -X POST localhost:9090 -d "username=yourSID&password=yourCASpassword"
 ```
