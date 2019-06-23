@@ -1,6 +1,6 @@
 package router
 
-import "../crawler"
+import crawler "SUSTechHelperGoBackend/crawler"
 import "fmt"
 import "net/http"
 

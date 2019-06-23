@@ -1,7 +1,7 @@
 package main
 
 import "net/http"
-import "./router"
+import router "SUSTechHelperGoBackend/router"
 import "log"
 
 func main() {
