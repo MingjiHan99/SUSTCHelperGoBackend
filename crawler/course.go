@@ -17,7 +17,7 @@ func GetAllCourse(username string, password string) string {
 		return jsonObj.String()
 	}
 
-	req, _ := http.NewRequest("POST", "http://jwxt.sustech.edu.cn/jsxsd/xskb/xskb_list.do", strings.NewReader(""))
+	req, _ := http.NewRequest("POST", "http://jwxt.sustech.edu.cn/jsxsd/xskb/xskb_list.do", nil)
 	resp, err := client.Do(req)
 	if err != nil {
 		fmt.Println(err)
