@@ -52,7 +52,7 @@ func GetAllCourse(username string, password string) string {
 	for _, course := range res {
 		jsonObj.ArrayAppend(course, "courses")
 	}
-	fmt.Println(jsonObj.String())
+	jsonObj.Set(true, "state")
 
-	return ""
+	return jsonObj.String()
 }
