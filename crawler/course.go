@@ -17,7 +17,11 @@ func GetAllCourse(username string, password string) string {
 		return jsonObj.String()
 	}
 
-	req, _ := http.NewRequest("POST", "http://jwxt.sustech.edu.cn/jsxsd/xskb/xskb_list.do", nil)
+	var r http.Request
+	r.ParseForm()
+	r.Form.Add("xnxq01id", "2018-2019-2")
+	req, _ := http.NewRequest("POST", "http://jwxt.sustech.edu.cn/jsxsd/xskb/xskb_list.do", strings.NewReader(r.Form.Encode()))
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	resp, err := client.Do(req)
 	if err != nil {
 		fmt.Println(err)
