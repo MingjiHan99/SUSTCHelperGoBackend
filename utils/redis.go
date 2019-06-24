@@ -37,24 +37,21 @@ func NewRedisPool(redisURL string) *redis.Pool {
 
 var redisPool = NewRedisPool(RedisURL)
 
-func Set(k, v string) {
+func Set(k, v string) error {
 	c := redisPool.Get()
 	defer c.Close()
 	_, err := c.Do("SET", k, v)
-	if err != nil {
-		fmt.Println("set error", err.Error())
-	}
+	return err
 }
 
-func GetStringValue(k string) string {
+func Get(k string) (string, error) {
 	c := redisPool.Get()
 	defer c.Close()
-	username, err := redis.String(c.Do("GET", k))
+	value, err := redis.String(c.Do("GET", k))
 	if err != nil {
-		fmt.Println("Get Error: ", err.Error())
-		return ""
+		return "", err
 	}
-	return username
+	return value, nil
 }
 
 func SetKeyExpire(k string, ex int) {

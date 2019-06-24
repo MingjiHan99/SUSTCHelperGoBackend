@@ -7,8 +7,6 @@ import (
 	"net/http"
 	"time"
 
-	utils "SUSTechHelperGoBackend/utils"
-
 	"github.com/Jeffail/gabs"
 )
 
@@ -52,9 +50,11 @@ func Login(code string) string {
 	str := openid + "SusTechHelper" + time
 	sessionKey := Sha256Encryption(&str)
 
+	if err := SetSession(openid, sessionKey); err != nil {
+		fmt.Errorf("Set session failed" + err.Error())
+		return jsonObj.String()
+	}
 	jsonObj.Set(true, "success")
 	jsonObj.Set(sessionKey, "session_key")
-
-	utils.Set("SH:session:"+sessionKey+":openid", openid)
 	return jsonObj.String()
 }

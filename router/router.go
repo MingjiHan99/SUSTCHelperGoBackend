@@ -27,3 +27,14 @@ func LoginQuery(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Fprintln(w, "", user.Login(code))
 }
+
+func SubscribeQuery(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	formID := r.Form["formId"][0]
+	username := r.Form["username"][0]
+	password := r.Form["password"][0]
+	session := r.Form["session"][0]
+	course := r.Form["course"][0]
+
+	fmt.Fprintln(w, "", user.Subsribe(username, password, formID, course, session))
+}
