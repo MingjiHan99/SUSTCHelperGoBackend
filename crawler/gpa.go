@@ -43,7 +43,7 @@ func Currency(period string, jsonObj *gabs.Container, client *http.Client, wg *s
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	resp, err := client.Do(req)
 	if err != nil {
-
+		return 
 	}
 	defer resp.Body.Close()
 
