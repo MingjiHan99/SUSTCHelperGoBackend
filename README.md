@@ -16,4 +16,4 @@ go run main.go
 curl -X POST localhost:9090/gpa -d "username=yourSID&password=yourCASpassword"
 ```
 ### News
-Due to network security issues, SUSTechHelper is no longer running.
+The SUSTechHelper is stopped due to regulations and network security issues.
